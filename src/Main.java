@@ -332,6 +332,58 @@ class RentalManagement {
         System.out.println("0. Exit");
         System.out.print("Enter your choice: ");
     }
+
+    public void menu(){
+        int choice;
+        do{
+            getChoices();
+            choice=sc.nextInt();
+            System.out.println("---------------------");
+
+            switch(choice){
+                case 1:
+                    System.out.println("Enter Vehicle ID : ");
+                    String vehicleId=sc.next();
+                    System.out.println("Enter Vehicle Brand  ");
+                    String brand=sc.next();
+                    System.out.println("Enter Vehicle Model : ");
+                    String model=sc.next();
+                    System.out.println("Enter Vehicle Type : ");
+                    String type=sc.next();
+                    System.out.println("Enter charge per day : ");
+                    double charge=sc.nextDouble();
+                    addVehicle(vehicleId, brand, model, type, charge);
+                    break;
+                case 2:
+                    System.out.println("Enter Vehicle ID : ");
+                    vehicleId=sc.next();
+                    deleteVehicle(vehicleId);
+                    break;
+                case 3:
+                    System.out.println("Enter Vehicle ID : ");
+                    String newVehicleId=sc.next();
+                    System.out.println("Enter Vehicle Brand  ");
+                    String newBrand=sc.next();
+                    System.out.println("Enter Vehicle Model : ");
+                    String newModel=sc.next();
+                    System.out.println("Enter Vehicle Type : ");
+                    String newType=sc.next();
+                    System.out.println("Enter charge per day : ");
+                    double newCharge=sc.nextDouble();
+                    editVehicle(newVehicleId, newBrand, newModel, newType, newCharge);
+                    break;
+                case 4:
+                    System.out.println("Enter Customer ID  : ");
+                    String cusID=sc.next();
+                    System.out.println("Enter Customer Name  : ");
+                    String cusName=sc.next();
+                    System.out.println("Enter Customer Email  : ");
+                    String email=sc.next();
+                    System.out.println("Enter Customer Contact Number  : ");
+                    String phone=sc.next();
+                    add_customer(cusID, cusName, email, phone);
+                    break;
+    }
 }
 
 public class Main {
