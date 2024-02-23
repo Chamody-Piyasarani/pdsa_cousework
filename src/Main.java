@@ -181,6 +181,47 @@ class RentalManagement {
         }
         totalCusomers++;
     }
+
+    public void rent_to_customer(String customerId, String vehicleId, String bookingId, LocalDate bookingDate){
+        VehicleNode current_vehicle=head;
+        boolean vehicle_found=false;
+        while(current_vehicle != null){
+            if(current_vehicle.vehicle.vehicle_id.equals(vehicleId)){
+                vehicle_found=true;
+                if(!current_vehicle.vehicle.available){
+                    System.err.println("This vehicle is already Rented");
+                    return;
+                }
+                current_vehicle.vehicle.available=false;
+                current_vehicle.vehicle.rentDate=bookingDate;
+                break;
+            }
+            current_vehicle=current_vehicle.next;
+        }
+
+        if(!vehicle_found){
+            System.err.println("Vehicle not found!!!");
+            return;
+        }
+
+        CustomerNode current_customer=cus_head;
+        boolean customer_found=false;
+        while(current_customer!=null){
+            if(current_customer.cus.customerId.equals(customerId)){
+                customer_found=true;
+                break;
+            }
+        }
+
+        if(!customer_found){
+            System.err.println("Customer not found!!!");
+            return;
+        }
+
+        current_vehicle.vehicle.customerId=customerId;
+
+        System.out.println("Vehicle " + vehicleId + " rented to customer " + customerId + " with booking ID  "+ bookingId);
+    }
 }
 public String get_cusName(String customerId){
     CustomerNode current = cus_head;
