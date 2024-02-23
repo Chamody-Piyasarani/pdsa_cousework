@@ -92,6 +92,27 @@ class RentalManagement{
         }
         return false;
     }
+
+    public void addVehicle(String vehicle_id,String brand, String model,String type,double chargePerDay){
+        Vehicle newVehicle=new Vehicle(vehicle_id, brand, model, type, chargePerDay);
+        VehicleNode newVehicleNode=new VehicleNode(newVehicle);
+
+        if(isVehicleExisist(vehicle_id)){
+            System.err.println("This Vehicle is Already Exist");
+            return;
+        }
+
+        if(head==null){
+            head=newVehicleNode;
+            back=newVehicleNode;
+        }
+        else{
+            back.next=newVehicleNode;
+            newVehicleNode.prev=back;
+            back=newVehicleNode;
+        }
+        totalVehicles++;
+    }
 public class Main {
     public static void main(String[] args) {
 
