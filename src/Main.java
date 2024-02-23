@@ -60,6 +60,38 @@ class VehicleNode{     //Define class to contain Vehicle attributes into a node
     }
 
 }
+class RentalManagement{
+    VehicleNode head=null;
+    VehicleNode back=null;
+    CustomerNode cus_head=null;
+    int totalVehicles=0;
+    int totalCusomers=0;
+    Scanner sc=new Scanner(System.in);
+
+    public RentalManagement(){
+        menu();
+    }
+
+    public boolean isVehicleExisist(String vehicleID){ // Method to check whether the vehicle id is exist or not
+        VehicleNode current = head;
+        while(current!=null){
+            if(current.vehicle.vehicle_id.equals(vehicleID)){
+                return true;
+            }
+            current=current.next;
+        }
+        return false;
+    }
+
+    public boolean isCustomerExsist(String customerID){  // Method to check whether the customer id is exist or not
+        CustomerNode current=cus_head;
+        while(current!=null){
+            if(current.cus.customerId.equals(customerID)){
+                return true;
+            }
+        }
+        return false;
+    }
 public class Main {
     public static void main(String[] args) {
 
