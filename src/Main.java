@@ -113,6 +113,35 @@ class RentalManagement{
         }
         totalVehicles++;
     }
+
+    public void deleteVehicle(String vehicleID){
+        VehicleNode current=head;
+
+        if(!isVehicleExisist(vehicleID)){
+            System.err.println("Vehicle does not exisist");
+            return;
+        }
+        while(current!=null){
+            if(current.vehicle.vehicle_id.equals(vehicleID)){
+                if(current.prev!=null){
+                    current=current.next;
+                }
+                else{
+                    head=current.next;
+                }
+
+                if(current.next!=null){
+                    current=current.prev;
+                }
+                else{
+                    back=current.prev;
+                }
+                totalVehicles--;
+                return;
+            }
+            current=current.next;
+        }
+    }
 public class Main {
     public static void main(String[] args) {
 
