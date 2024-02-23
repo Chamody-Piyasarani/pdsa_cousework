@@ -233,6 +233,16 @@ public String get_cusName(String customerId){
     }
     return "No Name Found";
 }
+public String get_cusPhone(String customerId){
+    CustomerNode current = cus_head;
+    while(current != null){
+        if(current.cus.customerId.equals(customerId)){
+            return current.cus.telephone;
+        }
+        current = current.next;
+    }
+    return "No Phone number Found";
+}
 public class Main {
     public static void main(String[] args) {
 
