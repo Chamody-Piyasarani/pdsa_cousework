@@ -276,6 +276,32 @@ class RentalManagement {
             current = current.next;
         }
     }
+    public void return_vehicle(String vehi_id){
+
+        VehicleNode current = head;
+        while(current != null){
+            if(current.vehicle.vehicle_id.equals(vehi_id)){
+                if(current.vehicle.available){
+                    System.err.println("vehicle id" +vehi_id+" is already exist.");
+                    return;
+                }
+                System.out.print("Enter Return date (YYYY-MM-DD): ");
+                LocalDate return_date = LocalDate.parse(sc.next());
+                long days = ChronoUnit.DAYS.between(current.vehicle.rentDate, return_date);
+                System.out.println("Days after rent: "+days);
+                double price = days*current.vehicle.chargePerDay;
+                System.out.println("Whole price for the rent : " + price);
+                current.vehicle.available = true;
+                current.vehicle.customerId = null;
+                current.vehicle.rentDate = null;
+                current.vehicle.returnDate = null;
+                System.out.println("Vehicle "+vehi_id+" returned successfully.");
+                return;
+            }
+            current = current.next;
+        }
+        System.out.println("Vehicle "+vehi_id+" not returned yet." );
+    }
 }
 
 public class Main {
