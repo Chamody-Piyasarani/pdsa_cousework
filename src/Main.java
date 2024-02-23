@@ -182,6 +182,16 @@ class RentalManagement {
         totalCusomers++;
     }
 }
+public String get_cusName(String customerId){
+    CustomerNode current = cus_head;
+    while(current != null){
+        if(current.cus.customerId.equals(customerId)){
+            return current.cus.cus_name;
+        }
+        current = current.next;
+    }
+    return "No Name Found";
+}
 public class Main {
     public static void main(String[] args) {
 
