@@ -222,6 +222,23 @@ class RentalManagement {
 
         System.out.println("Vehicle " + vehicleId + " rented to customer " + customerId + " with booking ID  "+ bookingId);
     }
+    public void show_available_vehicle(){
+        System.out.println("Available vehicles: \n");
+        VehicleNode current = head;
+        boolean availables = false;
+        while(current != null){
+            if(current.vehicle.available){
+                availables = true;
+                System.out.println("Vehicle ID: " + current.vehicle.vehicle_id);
+                System.out.println("Model: "+current.vehicle.vehicle_brand+" "+ current.vehicle.vehicle_model);
+                System.out.println("Type: " + current.vehicle.vehicle_type);
+                System.out.println("---------------------");
+            }
+            current = current.next;
+        }if(!availables){
+            System.err.println("All cars are rented.");
+        }
+    }
 }
 public class Main {
     public static void main(String[] args) {
