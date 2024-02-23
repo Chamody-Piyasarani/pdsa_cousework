@@ -142,6 +142,28 @@ class RentalManagement{
             current=current.next;
         }
     }
+
+    public void editVehicle(String vehicleId, String brand,String model, String type,double chargePerDay){
+        VehicleNode current=head;
+
+        if(!isVehicleExisist(vehicleId)){
+            System.err.println("Vehicle does not exist");
+            return;
+        }
+
+        while(current!=null){
+            if(current.vehicle.vehicle_id.equals(vehicleId)){
+                current.vehicle.vehicle_brand=brand;
+                current.vehicle.vehicle_model=model;
+                current.vehicle.vehicle_type=type;
+                current.vehicle.chargePerDay=chargePerDay;
+                System.out.println("Vehicle Edited Successfully!");
+                System.out.println("------------------------------");
+                break;
+            }
+            current=current.next;
+        }
+    }
 public class Main {
     public static void main(String[] args) {
 
