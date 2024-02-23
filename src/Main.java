@@ -24,6 +24,7 @@ class Vehicle{  //define Class for vehicle to declare its attributes
     }
 
 }
+
 class Customer{ //define Class for Customer to declare its attributes
     String customerId;
     String cus_name;
@@ -69,7 +70,7 @@ class RentalManagement {
     Scanner sc = new Scanner(System.in);
 
     public RentalManagement() {
-
+        menu();
     }
 
     public boolean isVehicleExisist(String vehicleID) { // Method to check whether the vehicle id is exist or not
@@ -383,12 +384,47 @@ class RentalManagement {
                     String phone=sc.next();
                     add_customer(cusID, cusName, email, phone);
                     break;
+                case 5:
+                    System.out.println("Enter Customer ID : ");
+                    String rent_cusID=sc.next();
+                    System.out.println("Enter Vehicle ID : ");
+                    String rent_vehicleId=sc.next();
+                    System.out.println("Enter Booking ID : ");
+                    String bookingId=sc.next();
+                    System.out.println("Enter Booking date (YYYY-MM-DD): ");
+                    LocalDate bookingDate=LocalDate.parse(sc.next());
+                    rent_to_customer(rent_cusID, rent_vehicleId, bookingId, bookingDate);
+                    break;
+                case 6:
+                    show_available_vehicle();
+                    break;
+                case 7:
+                    show_rented_vehicle();
+                    break;
+                case 8:
+                    show_customers();
+                    break;
+                case 9:
+                    System.out.println("Enter Vehicle ID : ");
+                    vehicleId=sc.next();
+                    return_vehicle(vehicleId);
+                    break;
+                case 0:
+                    System.out.println("Exiting...........");
+                    break;
+                default:
+                    System.err.println("Invalid Choice!!!");
+                    break;
+            }
+        }
+        while(choice!=0);
+
     }
 }
 
 public class Main {
     public static void main(String[] args) {
-
+        RentalManagement rental=new RentalManagement();
 
     }
 }
