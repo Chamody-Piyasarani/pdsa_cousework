@@ -302,6 +302,21 @@ class RentalManagement {
         }
         System.out.println("Vehicle "+vehi_id+" not returned yet." );
     }
+    public void show_customers(){
+        System.out.println("All Customers:\n");
+        CustomerNode current = cus_head;
+        while(current != null){
+            System.out.println("Customer ID: " + current.cus.customerId);
+            System.out.println("Name: " + current.cus.cus_name);
+            System.out.println("Email: " + current.cus.cus_email);
+            System.out.println("Phone: " + current.cus.telephone);
+            System.out.println("---------------------");
+            current = current.next;
+        }
+        if (totalCusomers == 0) {
+            System.err.println("No customers available.");
+        }
+    }
 }
 
 public class Main {
