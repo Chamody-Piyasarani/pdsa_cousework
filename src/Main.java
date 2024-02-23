@@ -48,6 +48,18 @@ class CustomerNode{ //Define class to contain Customer attributes into a node
     }
 
 }
+class VehicleNode{     //Define class to contain Vehicle attributes into a node
+    Vehicle vehicle;
+    VehicleNode prev;
+    VehicleNode next;
+
+    public VehicleNode(Vehicle vehicle) { //Paramiterized constructor to pass Vehicle Object
+        this.vehicle=vehicle;
+        this.prev=null;
+        this.next=null;
+    }
+
+}
 public class Main {
     public static void main(String[] args) {
 
