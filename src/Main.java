@@ -317,6 +317,21 @@ class RentalManagement {
             System.err.println("No customers available.");
         }
     }
+    public void getChoices(){
+        System.out.println("\n---------------------");
+        System.out.println("Vehicle Rental Management System");
+        System.out.println("1. Add Vehicle");
+        System.out.println("2. Delete Vehicle");
+        System.out.println("3. Edit Vehicle");
+        System.out.println("4. Add Customer");
+        System.out.println("5. Rent Vehicle to Customer");
+        System.out.println("6. Show Available Vehicles");
+        System.out.println("7. Show Rented Vehicles");
+        System.out.println("8. Show Customers");
+        System.out.println("9. Enter Return Vehicle");
+        System.out.println("0. Exit");
+        System.out.print("Enter your choice: ");
+    }
 }
 
 public class Main {
