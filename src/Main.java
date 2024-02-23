@@ -260,7 +260,24 @@ class RentalManagement {
         }
         return "No Phone number Found";
     }
+    public void show_rented_vehicle(){
+        System.out.println("Rented vehicles: \n");
+        VehicleNode current = head;
+        while(current != null){
+            if (!current.vehicle.available) {
+                System.out.println("Vehicle ID: " + current.vehicle.vehicle_id);
+                System.out.println("Model: " + current.vehicle.vehicle_model);
+                System.out.println("Type: " + current.vehicle.vehicle_type);
+                System.out.println("Customer Name: " + get_cusName(current.vehicle.customerId));
+                System.out.println("Customer Phone: " + get_cusPhone(current.vehicle.customerId));
+                System.out.println("Booking Date: " + current.vehicle.rentDate);
+                System.out.println("---------------------");
+            }
+            current = current.next;
+        }
+    }
 }
+
 public class Main {
     public static void main(String[] args) {
 
