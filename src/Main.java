@@ -144,10 +144,7 @@ class RentalManagement {
     public void editVehicle(String vehicleId, String brand, String model, String type, double chargePerDay) {
         VehicleNode current = head;
 
-        if (!isVehicleExisist(vehicleId)) {
-            System.err.println("Vehicle does not exist");
-            return;
-        }
+
 
         while (current != null) {
             if (current.vehicle.vehicle_id.equals(vehicleId)) {
@@ -363,6 +360,12 @@ class RentalManagement {
                 case 3:
                     System.out.println("Enter Vehicle ID : ");
                     String newVehicleId=sc.next();
+
+                    if (!isVehicleExisist(newVehicleId)) {
+                        System.err.println("Vehicle does not exist");
+                        break;
+                    }
+
                     System.out.println("Enter Vehicle Brand  ");
                     String newBrand=sc.next();
                     System.out.println("Enter Vehicle Model : ");
