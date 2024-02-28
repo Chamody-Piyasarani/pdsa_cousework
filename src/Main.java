@@ -335,6 +335,7 @@ class RentalManagement {
         int choice;
         do{
             getChoices();
+            if (sc.hasNextInt()){
             choice=sc.nextInt();
             System.out.println("---------------------");
 
@@ -419,8 +420,13 @@ class RentalManagement {
                     System.err.println("Invalid Choice!!!");
                     break;
             }
-        }
-        while(choice!=0);
+        }else{
+            System.err.println("Invalid input!");
+            sc.next();
+            choice = -1;
+          }
+
+        }while(choice!=0);
 
     }
 }
