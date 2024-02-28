@@ -84,12 +84,13 @@ class RentalManagement {
         return false;
     }
 
-    public boolean isCustomerExsist(String customerID) {  // Method to check whether the customer id is exist or not
+    public boolean isCustomerExsist(String customerID) {
         CustomerNode current = cus_head;
         while (current != null) {
             if (current.cus.customerId.equals(customerID)) {
                 return true;
             }
+            current = current.next;
         }
         return false;
     }
