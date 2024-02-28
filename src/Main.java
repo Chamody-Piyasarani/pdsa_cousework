@@ -341,43 +341,60 @@ class RentalManagement {
 
             switch(choice){
                 case 1:
-                    System.out.println("Enter Vehicle ID : ");
-                    String vehicleId=sc.next();
-                    System.out.println("Enter Vehicle Brand  ");
-                    String brand=sc.next();
-                    System.out.println("Enter Vehicle Model : ");
-                    String model=sc.next();
-                    System.out.println("Enter Vehicle Type : ");
-                    String type=sc.next();
-                    System.out.println("Enter charge per day : ");
-                    double charge=sc.nextDouble();
-                    addVehicle(vehicleId, brand, model, type, charge);
-                    break;
+                    try {
+                        System.out.println("Enter Vehicle ID : ");
+                        String vehicleId = sc.next();
+                        System.out.println("Enter Vehicle Brand  ");
+                        String brand = sc.next();
+                        System.out.println("Enter Vehicle Model : ");
+                        String model = sc.next();
+                        System.out.println("Enter Vehicle Type : ");
+                        String type = sc.next();
+                        System.out.println("Enter charge per day : ");
+                        double charge = sc.nextDouble();
+                        addVehicle(vehicleId, brand, model, type, charge);
+                        break;
+                    }catch(Exception e){
+                        System.err.println(e);
+                        break;
+                    }
                 case 2:
-                    System.out.println("Enter Vehicle ID : ");
-                    vehicleId=sc.next();
-                    deleteVehicle(vehicleId);
-                    break;
-                case 3:
-                    System.out.println("Enter Vehicle ID : ");
-                    String newVehicleId=sc.next();
-
-                    if (!isVehicleExisist(newVehicleId)) {
-                        System.err.println("Vehicle does not exist");
+                    try {
+                        System.out.println("Enter Vehicle ID : ");
+                        String vehicleId = sc.next();
+                        deleteVehicle(vehicleId);
+                        break;
+                    }catch(Exception e){
+                        System.err.println(e);
                         break;
                     }
 
-                    System.out.println("Enter Vehicle Brand  ");
-                    String newBrand=sc.next();
-                    System.out.println("Enter Vehicle Model : ");
-                    String newModel=sc.next();
-                    System.out.println("Enter Vehicle Type : ");
-                    String newType=sc.next();
-                    System.out.println("Enter charge per day : ");
-                    double newCharge=sc.nextDouble();
-                    editVehicle(newVehicleId, newBrand, newModel, newType, newCharge);
-                    break;
+                case 3:
+                    try {
+                        System.out.println("Enter Vehicle ID : ");
+                        String newVehicleId = sc.next();
+
+                        if (!isVehicleExisist(newVehicleId)) {
+                            System.err.println("Vehicle does not exist");
+                            break;
+                        }
+
+                        System.out.println("Enter Vehicle Brand  ");
+                        String newBrand = sc.next();
+                        System.out.println("Enter Vehicle Model : ");
+                        String newModel = sc.next();
+                        System.out.println("Enter Vehicle Type : ");
+                        String newType = sc.next();
+                        System.out.println("Enter charge per day : ");
+                        double newCharge = sc.nextDouble();
+                        editVehicle(newVehicleId, newBrand, newModel, newType, newCharge);
+                        break;
+                    }catch(Exception e){
+                        System.err.println(e);
+                        break;
+                    }
                 case 4:
+
                     System.out.println("Enter Customer ID  : ");
                     String cusID=sc.next();
                     System.out.println("Enter Customer Name  : ");
@@ -388,17 +405,23 @@ class RentalManagement {
                     String phone=sc.next();
                     add_customer(cusID, cusName, email, phone);
                     break;
+
                 case 5:
-                    System.out.println("Enter Customer ID : ");
-                    String rent_cusID=sc.next();
-                    System.out.println("Enter Vehicle ID : ");
-                    String rent_vehicleId=sc.next();
-                    System.out.println("Enter Booking ID : ");
-                    String bookingId=sc.next();
-                    System.out.println("Enter Booking date (YYYY-MM-DD): ");
-                    LocalDate bookingDate=LocalDate.parse(sc.next());
-                    rent_to_customer(rent_cusID, rent_vehicleId, bookingId, bookingDate);
-                    break;
+                    try {
+                        System.out.println("Enter Customer ID : ");
+                        String rent_cusID = sc.next();
+                        System.out.println("Enter Vehicle ID : ");
+                        String rent_vehicleId = sc.next();
+                        System.out.println("Enter Booking ID : ");
+                        String bookingId = sc.next();
+                        System.out.println("Enter Booking date (YYYY-MM-DD): ");
+                        LocalDate bookingDate = LocalDate.parse(sc.next());
+                        rent_to_customer(rent_cusID, rent_vehicleId, bookingId, bookingDate);
+                        break;
+                    }catch(Exception e){
+                        System.err.println(e);
+                        break;
+                    }
                 case 6:
                     show_available_vehicle();
                     break;
@@ -410,7 +433,7 @@ class RentalManagement {
                     break;
                 case 9:
                     System.out.println("Enter Vehicle ID : ");
-                    vehicleId=sc.next();
+                    String vehicleId=sc.next();
                     return_vehicle(vehicleId);
                     break;
                 case 0:
