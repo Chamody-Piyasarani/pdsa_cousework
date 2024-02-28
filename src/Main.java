@@ -99,10 +99,7 @@ class RentalManagement {
         Vehicle newVehicle = new Vehicle(vehicle_id, brand, model, type, chargePerDay);
         VehicleNode newVehicleNode = new VehicleNode(newVehicle);
 
-        if (isVehicleExisist(vehicle_id)) {
-            System.err.println("This Vehicle is Already Exist");
-            return;
-        }
+
 
         if (head == null) {
             head = newVehicleNode;
@@ -118,10 +115,7 @@ class RentalManagement {
     public void deleteVehicle(String vehicleID) {
         VehicleNode current = head;
 
-        if (!isVehicleExisist(vehicleID)) {
-            System.err.println("Vehicle does not exisist");
-            return;
-        }
+
         while (current != null) {
             if (current.vehicle.vehicle_id.equals(vehicleID)) {
                 if (current.prev != null) {
@@ -162,10 +156,7 @@ class RentalManagement {
     }
 
     public void add_customer(String cusID, String cusName, String email, String phone) {
-        if (isCustomerExsist(cusID)) {
-            System.err.println("This ID : " + cusID + " already exist.");
-            return;
-        }
+
 
         Customer newCus = new Customer(cusID, cusName, email, phone);
         CustomerNode cusNode = new CustomerNode(newCus);
@@ -198,24 +189,7 @@ class RentalManagement {
             current_vehicle=current_vehicle.next;
         }
 
-        if(!vehicle_found){
-            System.err.println("Vehicle not found!!!");
-            return;
-        }
 
-        CustomerNode current_customer=cus_head;
-        boolean customer_found=false;
-        while(current_customer!=null){
-            if(current_customer.cus.customerId.equals(customerId)){
-                customer_found=true;
-                break;
-            }
-        }
-
-        if(!customer_found){
-            System.err.println("Customer not found!!!");
-            return;
-        }
 
         current_vehicle.vehicle.customerId=customerId;
 
@@ -345,6 +319,12 @@ class RentalManagement {
                     try {
                         System.out.println("Enter Vehicle ID : ");
                         String vehicleId = sc.next();
+
+                        if (isVehicleExisist(vehicleId)) {
+                            System.err.println("This Vehicle is Already Exist");
+                            break;
+                        }
+
                         System.out.println("Enter Vehicle Brand  ");
                         String brand = sc.next();
                         System.out.println("Enter Vehicle Model : ");
@@ -363,6 +343,10 @@ class RentalManagement {
                     try {
                         System.out.println("Enter Vehicle ID : ");
                         String vehicleId = sc.next();
+                        if (!isVehicleExisist(vehicleId)) {
+                            System.err.println("Vehicle does not exisist");
+                            break;
+                        }
                         deleteVehicle(vehicleId);
                         break;
                     }catch(Exception e){
@@ -398,6 +382,11 @@ class RentalManagement {
 
                     System.out.println("Enter Customer ID  : ");
                     String cusID=sc.next();
+
+                    if (isCustomerExsist(cusID)) {
+                        System.err.println("This ID : " + cusID + " already exist.");
+                        break;
+                    }
                     System.out.println("Enter Customer Name  : ");
                     String cusName=sc.next();
                     System.out.println("Enter Customer Email  : ");
@@ -411,6 +400,12 @@ class RentalManagement {
                     try {
                         System.out.println("Enter Customer ID : ");
                         String rent_cusID = sc.next();
+
+                        if(!isCustomerExsist(rent_cusID)){
+                            System.err.println("Customer not found!!!");
+                            break;
+                        }
+
                         System.out.println("Enter Vehicle ID : ");
                         String rent_vehicleId = sc.next();
                         System.out.println("Enter Booking ID : ");
