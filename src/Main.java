@@ -124,13 +124,13 @@ class RentalManagement {
         while (current != null) {
             if (current.vehicle.vehicle_id.equals(vehicleID)) {
                 if (current.prev != null) {
-                    current = current.next;
+                    current.prev.next = current.next;
                 } else {
                     head = current.next;
                 }
 
                 if (current.next != null) {
-                    current = current.prev;
+                    current.next.prev = current.prev;
                 } else {
                     back = current.prev;
                 }
